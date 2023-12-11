@@ -16,7 +16,7 @@ public class Group: IEntity
     public decimal Version { get; set; }
 
     [ForeignKey(nameof(GroupLeaderId))]
-    public virtual Employee? GroupLeader { get; set; } = null!;
+    public virtual Employee? GroupLeader { get; set; }
 
     public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
 }

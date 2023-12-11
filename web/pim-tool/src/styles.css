@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+:root{
+  --gray: #666666;
+  --darker-gray: #333333;
+  --blue: #2F85FA;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  color: var(--gray);
+}
+.navbar .vertical{
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

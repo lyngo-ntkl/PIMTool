@@ -28,5 +28,11 @@ namespace PIMTool.Test.Services
             // Assert
             Assert.IsNotNull(result);
         }
+
+        [Test]
+        public async Task Create()
+        {
+            //Assert.DoesNotThrow();
+        }
     }
 }

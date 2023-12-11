@@ -1,4 +1,6 @@
-﻿namespace PIMTool.Middlewares
+﻿using PIMTool.Core.Exceptions;
+
+namespace PIMTool.Middlewares
 {
     public class GlobalExceptionMiddleware
     {
@@ -20,14 +22,27 @@
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Unexpected exception");
+                int statusCode = GetStatusCode(ex);
                 context.Response.ContentType = "application/json";
-                context.Response.StatusCode = 500;
+                context.Response.StatusCode = statusCode;
 
                 await context.Response.WriteAsync(new
                 {
-                    Code = 500,
+                    Code = statusCode,
                     Message = ex.Message
                 }.ToString() ?? string.Empty);
+            }
+        }
+
+        private int GetStatusCode(Exception exception)
+        {
+            if(typeof(Exception) == typeof(NotFoundException))
+            {
+                return 404;
+            }
+            else
+            {
+                return 500;
             }
         }
     }

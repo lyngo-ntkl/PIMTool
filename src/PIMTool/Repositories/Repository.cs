@@ -2,6 +2,7 @@
 using PIMTool.Core.Domain.Entities;
 using PIMTool.Core.Interfaces.Repositories;
 using PIMTool.Database;
+using System.Linq.Expressions;
 
 namespace PIMTool.Repositories
 {
@@ -21,7 +22,7 @@ namespace PIMTool.Repositories
             return _set.Where(x => true);
         }
 
-        public async Task<T?> GetAsync(int id, CancellationToken cancellationToken = default)
+        public async Task<T?> GetAsync(decimal id, CancellationToken cancellationToken = default)
         {
             return await Get().SingleOrDefaultAsync(x => x.Id == id, cancellationToken);
         }
@@ -44,6 +45,31 @@ namespace PIMTool.Repositories
         public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             await _pimContext.SaveChangesAsync(cancellationToken);
+        }
+
+        public void Update(T entity)
+        {
+            _set.Update(entity);
+        }
+
+        public async Task<IEnumerable<T>> GetAsync(Expression<Func<T, bool>>? filter = null, string includeProperties = "", Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null)
+        {
+            IQueryable<T> query = _set;
+            if(filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            foreach(string property in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(property);
+            }
+
+            if(orderBy != null)
+            {
+                query = orderBy(query);
+            }
+            return await query.ToListAsync();
         }
     }
 }

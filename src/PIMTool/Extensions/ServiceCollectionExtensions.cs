@@ -10,7 +10,10 @@ namespace PIMTool.Extensions
         public static void Register(this IServiceCollection services)
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IProjectEmployeeRepository, ProjectEmployeeRepository>();
             services.AddScoped<IProjectService, ProjectService>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IGroupService, GroupService>();
         }
     }
 }

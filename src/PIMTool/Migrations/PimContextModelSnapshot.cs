@@ -50,7 +50,99 @@ namespace PIMTool.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1m,
+                            BirthDate = new DateTime(2002, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Ly",
+                            LastName = "Ngô",
+                            Version = 0m,
+                            Visa = "VN"
+                        },
+                        new
+                        {
+                            Id = 2m,
+                            BirthDate = new DateTime(2002, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Linh",
+                            LastName = "Nguyễn",
+                            Version = 0m,
+                            Visa = "VN"
+                        },
+                        new
+                        {
+                            Id = 3m,
+                            BirthDate = new DateTime(1994, 12, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Lan",
+                            LastName = "Trần",
+                            Version = 0m,
+                            Visa = "VN"
+                        },
+                        new
+                        {
+                            Id = 4m,
+                            BirthDate = new DateTime(1996, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Duy",
+                            LastName = "Hoàng",
+                            Version = 0m,
+                            Visa = "VN"
+                        },
+                        new
+                        {
+                            Id = 5m,
+                            BirthDate = new DateTime(1997, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Huy",
+                            LastName = "Phan",
+                            Version = 0m,
+                            Visa = "VN"
+                        },
+                        new
+                        {
+                            Id = 6m,
+                            BirthDate = new DateTime(2000, 11, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Minh",
+                            LastName = "Doãn",
+                            Version = 0m,
+                            Visa = "VN"
+                        },
+                        new
+                        {
+                            Id = 7m,
+                            BirthDate = new DateTime(2001, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Quang",
+                            LastName = "Tô",
+                            Version = 0m,
+                            Visa = "VN"
+                        },
+                        new
+                        {
+                            Id = 8m,
+                            BirthDate = new DateTime(1999, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Trường",
+                            LastName = "Phạm",
+                            Version = 0m,
+                            Visa = "VN"
+                        },
+                        new
+                        {
+                            Id = 9m,
+                            BirthDate = new DateTime(1998, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Tiến",
+                            LastName = "Vũ",
+                            Version = 0m,
+                            Visa = "VN"
+                        },
+                        new
+                        {
+                            Id = 10m,
+                            BirthDate = new DateTime(2004, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Thịnh",
+                            LastName = "Đinh",
+                            Version = 0m,
+                            Visa = "VN"
+                        });
                 });
 
             modelBuilder.Entity("PIMTool.Core.Domain.Entities.Group", b =>
@@ -71,7 +163,39 @@ namespace PIMTool.Migrations
 
                     b.HasIndex("GroupLeaderId");
 
-                    b.ToTable("Groups");
+                    b.ToTable("Groups", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1m,
+                            GroupLeaderId = 9m,
+                            Version = 0m
+                        },
+                        new
+                        {
+                            Id = 2m,
+                            GroupLeaderId = 8m,
+                            Version = 0m
+                        },
+                        new
+                        {
+                            Id = 3m,
+                            GroupLeaderId = 7m,
+                            Version = 0m
+                        },
+                        new
+                        {
+                            Id = 4m,
+                            GroupLeaderId = 6m,
+                            Version = 0m
+                        },
+                        new
+                        {
+                            Id = 5m,
+                            GroupLeaderId = 5m,
+                            Version = 0m
+                        });
                 });
 
             modelBuilder.Entity("PIMTool.Core.Domain.Entities.Project", b =>
@@ -113,7 +237,7 @@ namespace PIMTool.Migrations
 
                     b.HasIndex("GroupId");
 
-                    b.ToTable("Projects");
+                    b.ToTable("Projects", (string)null);
                 });
 
             modelBuilder.Entity("PIMTool.Core.Domain.Entities.ProjectEmployee", b =>
@@ -128,7 +252,7 @@ namespace PIMTool.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("ProjectEmployees");
+                    b.ToTable("ProjectEmployees", (string)null);
                 });
 
             modelBuilder.Entity("PIMTool.Core.Domain.Entities.Group", b =>
